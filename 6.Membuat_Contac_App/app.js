@@ -1,34 +1,54 @@
-const contect = require('./contect.js'); 
+// MENGAMBIL ARGUMENT DARI COMMENT LINE
 
-// const { WriteQuestion , SaveData } = require('./contect'); // Bisa Menggunakan Pemanggilan Menggunakan Object Distructuring
+const yargs = require("yargs");
+const contect = require("./contect");
 
-const Main = async () => { // Metode Async Await 'Harus Menunggu Terlebih Dahulu'
-    // const nama = await question1(); // // Cara PEMANGGILAN DARI PENULISAN YANG KE 1
+// // Contoh Yargs Dengan Parameter Banyak Menggunakan Object
 
-    // const nama = await contect.WriteQuestion('Masukan Nama Anda :'); // Bisa Menggunkana Cara Variabel Yang Di jadikan Inisial File nya 
-    
-    const nama = await contect.WriteQuestion('Masukan Nama Anda :');
-    const email = await contect.WriteQuestion('Masukan Email Anda :');
-    const NoHp = await contect.WriteQuestion('Masukan No Hp Anda :');
-    
+yargs.command({
+  command: "add", // Perintah
+  describe: "Menambahkan Contact Baru", // Describsi
+  // Fields Yang Di Inginkan nya
+  builder: {
+    nama: {
+      describe: "Nama Lengkap",
+      demandOption: true,
+      type: "string",
+    },
+    email: {
+      describe: "Email Anda",
+      demandOption: false,
+      type: "string",
+    },
+    noHp: {
+      describe: "NoHp Anda",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  // untuk mengeksekusi fungsinya yang sudah di buat
+  handler(argv) {
+    // Menyatukan dengan File contect dan data nya akan di simpan di file JSON
+    contect.SaveData(argv.nama, argv.email, argv.noHp);
 
-    contect.SaveData(nama , email, NoHp); // Import File Dari Contect.js Dan Parameter nya juga
-}
+    // const data = {
+    //   nama: argv.nama,
+    //   email: argv.email,
+    //   noHp: argv.noHp,
+    // };
+    // console.log(data);
+  },
+});
 
-Main();
+yargs.parse(); // Untuk Memanggil Yargs Nya
 
-// // CARA PENULISAN MENGGUNAKAN CALBACK 
+// // Contoh Yargs Dengan Parameter Satuan
 
-// rl.question('Masukan Nama Anda : ' , (nama) => {
-//     rl.question('Masukan Email Anda : ' , (email) => {
-//         const data = {nama , email };
-//         const readFile = fs.readFileSync('./data/context.json');
-//         const changeData = JSON.parse(readFile);
-
-//         changeData.push(data)
-//         fs.writeFileSync('./data/context.json', JSON.stringify(changeData));
-//         console.log("Terimakasih Sudah Memasukan Data Nya ^_^ ");
-
-//         rl.close()
-//     })
-// })
+// yargs.command(
+//   "add",
+//   "Membuat Contact App",
+//   () => {},
+//   (argv) => {
+//     console.log(argv.nama);
+//   }
+// );
