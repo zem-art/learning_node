@@ -118,9 +118,9 @@ const detailContact = (nama) => {
 
   console.log(chalk.blue.inverse.bold("Contact Di Temukan"));
   console.log(`Nama : ${FindData.nama}`);
-  console.log(`No Hp : ${FindData.noHp}`);
+  console.log(`No Hp : ${FindData.NoHp}`);
   if (FindData.email) {
-    console.log(chalk.blue.inverse.bold(`Email : ${FindData.email}`));
+    console.log(`Email : ${FindData.email}`);
     return false;
   }
 };
