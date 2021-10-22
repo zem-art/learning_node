@@ -1,0 +1,21 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="column-md-8">
+            <h2>Detail Contact</h2>
+            <% if (!dataDetail) { %>
+              <div class="alert alert-danger fw-bold" role="alert">
+                Data Contact Tidak Ada <br><a href="/contact" class="alert-link fw-normal">&laquo; Kembali Ke Data Kontak.</a>
+              </div>  
+            <% } else {%>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Nama : <%= dataDetail.nama %> </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">nohp :  <%= dataDetail.nohp %> </h6>
+                  <p class="card-text">email : <%= dataDetail.email %> </p>
+                  <a href="/contact" class="card-link">&laquo; Back To </a>
+                </div>
+              </div>
+            <% } %> 
+        </div>
+    </div>
+</div>
