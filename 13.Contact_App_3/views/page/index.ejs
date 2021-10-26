@@ -1,0 +1,15 @@
+<h2>Hallo <%= nama %> </h2>
+
+<h4>Daftar Mahasiswa</h4>
+
+    <!-- CHECK DATA ARRAY -->
+    <% if (mhs.length < 1) { %>
+     <h1>Data Mahasiswa Masih Kosong !!!!</h1>
+    <% } else {%>
+        <% mhs.forEach(e  => { %>
+            <ul>
+                <li>Nama : <%= e.nama %> </li>
+                <li>Status : <%= e.status %> </li>
+            </ul>
+        <% }) %>
+    <% } %>
