@@ -1,0 +1,35 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Form Tambah Data Contact</h2>
+            <% if (typeof eror != 'undefined') { %>
+            <div class="alert alert-danger" role="alert">
+              <ul>
+                <% eror.forEach(erorr => { %> 
+                  <li><%= erorr.msg %> </li>
+                <% }) %>
+              </ul>
+            </div>
+            <% } %>
+            
+            <form method="POST" action="/contact">
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="nama" class="form-control" id="nama" name="nama" required>  
+                  <!-- name = variabel yang akan di buat kan nanti nya di file JSON  -->
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" >  
+                  <!-- name = variabel yang akan di buat kan nanti nya di file JSON  -->
+                </div>
+                <div class="mb-3">
+                  <label for="nohp" class="form-label">No Hp</label>
+                  <input type="nohp" class="form-control" id="nohp" name="nohp"> 
+                  <!-- name = variabel yang akan di buat kan nanti nya di file JSON  -->
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
